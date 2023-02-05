@@ -1,0 +1,10 @@
+import { Router } from "express";
+import { signup, login } from "./Routes/auth.js";
+import { token } from "./Middleware/Checkauth.js";
+import { privateroute, postpublic } from "./Routes/Post.js";
+const routes = Router();
+routes.post("/login", login);
+routes.post("/signup", signup);
+routes.get("/private", token, privateroute);
+routes.get("/postpublic", postpublic);
+export default routes;
